@@ -73,15 +73,27 @@ KD.wire();KP.wire();
 const bal=$('#riskBalance'),rp=$('#riskPct'),ro=$('#riskOutput'),stop=$('#riskStop'),pv=$('#riskPointValue'),sizeOut=$('#riskSizeOutput');function rc(){if(!bal||!rp||!ro)return;const balance=Math.max(0,Number(bal.value)||0),pct=Math.max(0,Number(rp.value)||0),risk=balance*pct/100;ro.textContent='Допустимый риск: $'+risk.toFixed(2)+' ('+pct.toFixed(2)+'%)';if(sizeOut&&stop&&pv){const distance=Math.max(0,Number(stop.value)||0),pointValue=Math.max(0,Number(pv.value)||0);const units=distance>0&&pointValue>0?risk/(distance*pointValue):0;sizeOut.textContent=units>0?'Расчётный объём: '+units.toLocaleString('ru-RU',{maximumFractionDigits:4})+' ед.':'Укажи стоп и стоимость пункта больше нуля'}}[bal,rp,stop,pv].filter(Boolean).forEach(el=>el.addEventListener('input',rc));rc();const rsk=$('#rrRisk'),tgt=$('#rrTarget'),rro=$('#rrOutput');function rr(){if(rsk&&tgt&&rro)rro.textContent='RR 1:'+((+tgt.value)/(+rsk.value)).toFixed(2)}if(rsk)rsk.oninput=rr;if(tgt)tgt.oninput=rr;const lev=$('#levRange'),lb=$('#levBalance'),lo=$('#levOutput');function lc(){if(lev&&lb&&lo)lo.textContent='Номинал: $'+((+lb.value||0)*(+lev.value||1)).toLocaleString('ru-RU')+' · плечо '+lev.value+'×'}if(lev)lev.oninput=lc;if(lb)lb.oninput=lc;
 document.body.querySelectorAll('[data-theme]').forEach(b=>b.onclick=()=>{settings.theme=b.dataset.theme;saveSettings();render()});const ac=$('#accentColor');if(ac)ac.oninput=()=>{settings.accent=ac.value;applySettings();localStorage.setItem(settingsKey,JSON.stringify(settings))};const fs=$('#fontSetting');if(fs)fs.onchange=()=>{settings.fontSize=fs.value;saveSettings()};const co=$('#contrastSetting');if(co)co.onchange=()=>{settings.contrast=co.checked;saveSettings()};const rs=$('#resetSettings');if(rs)rs.onclick=()=>{settings={theme:'midnight',accent:'#8d5cff',fontSize:'normal',contrast:true};saveSettings();render()}}
 $('#mobileMenu').onclick=()=>$('#sidebar').classList.toggle('open');
-// Telegram Mini App: reliable delegated navigation for sidebar and in-page menu buttons.
-document.addEventListener('click',e=>{
- const button=e.target.closest('[data-view]');
+// Navigation compatibility for Telegram WebView and regular browsers.
+function handleAcademyNavigation(e){
+ const target=e.target instanceof Element ? e.target : e.target && e.target.parentElement;
+ if(!target) return;
+ const button=target.closest('[data-view]');
  if(button){
   e.preventDefault();
-  e.stopImmediatePropagation();
-  go(button.dataset.view);
+  const destination=button.getAttribute('data-view');
+  if(destination && destination!==view) go(destination);
+  else if(destination) go(destination);
   return;
  }
- if(e.target.closest('[data-open]'))$('#sidebar').classList.remove('open');
+ if(target.closest('[data-open]')) $('#sidebar').classList.remove('open');
+}
+document.addEventListener('click',handleAcademyNavigation,true);
+document.addEventListener('pointerup',function(e){
+ const target=e.target instanceof Element ? e.target : e.target && e.target.parentElement;
+ const button=target && target.closest('[data-view]');
+ if(button && view!==button.getAttribute('data-view')){
+  e.preventDefault();
+  go(button.getAttribute('data-view'));
+ }
 },true);
 render();
