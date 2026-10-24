@@ -182,3 +182,40 @@ html[data-theme="light"] .trading-quote span{color:#453477}
 html[data-theme="light"] .principle-card{background:#f8f9ff;border-color:#dce1ef}
 html[data-theme="light"] .principles-footer{color:#39455f}
 @media(max-width:700px){.principles-grid{grid-template-columns:1fr}.trading-principles{padding:17px}.principle-card{padding:15px}.trading-quote{padding:16px}}
+
+/* Accessibility pass: calmer, clearer typography across the academy */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+html{font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%;text-rendering:optimizeLegibility}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.75;letter-spacing:0;font-weight:400}
+h1,h2,h3,h4,p,li,button,input,select,textarea,label{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;letter-spacing:normal}
+h1{line-height:1.2;letter-spacing:-.025em}
+h2{line-height:1.3;letter-spacing:-.018em}
+h3{line-height:1.4;letter-spacing:-.01em}
+p{line-height:1.8}
+.sub,.lesson p,.lesson-card p,.principle-card p,.principles-head>p,.principles-footer{font-size:15px;line-height:1.85}
+#content{font-size:16px}
+#sidebar nav button{font-size:14px;line-height:1.5}
+.brand b{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.brand small,#sidebar>label,.sidefoot,.eyebrow,.art-label{letter-spacing:.08em}
+.mentor p{font-size:13px;line-height:1.75}
+.lesson-card h3{font-size:16px;line-height:1.45}
+.lesson-card p{font-size:14px;line-height:1.75}
+.lesson-card .meta,.lesson-card .card-foot small,.lesson-card .card-foot button{font-size:12px}
+.trading-quote span{line-height:1.55;letter-spacing:normal}
+.trading-quote small{font-size:13px;line-height:1.8}
+.principle-card h3{font-size:16px;line-height:1.5}
+.principle-card p{font-size:14px;line-height:1.85}
+.principles-footer{font-size:14px;line-height:1.85}
+button,input,select,textarea{font-size:14px}
+button{line-height:1.5}
+input,select,textarea{line-height:1.6}
+.muted,.source-card small{line-height:1.8}
+::placeholder{opacity:1;color:#9aa5c0}
+html[data-theme="light"] ::placeholder{color:#65708a}
+@media(max-width:760px){
+ html{font-size:16px}
+ body{font-size:16px;line-height:1.8}
+ .sub,.lesson p,.lesson-card p,.principle-card p,.principles-head>p,.principles-footer{font-size:15px;line-height:1.85}
+ .lesson-card h3,.principle-card h3{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
