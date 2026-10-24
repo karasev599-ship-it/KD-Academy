@@ -156,3 +156,29 @@ button.primary{box-shadow:0 8px 22px -8px #8d5cffaa}
 .option.ok:has(+.qwhy b),.qblock .option.ok{border-color:#22c55e}.qwhy{margin-top:8px;font-size:.92em;color:var(--muted)}.qwhy b{color:var(--text)}
 .kp{border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:18px 0;background:#ffffff05}.kp svg{width:100%;height:auto;border-radius:12px}.kp label{display:block;margin:10px 0}.kp input[type=range]{width:100%;accent-color:var(--purple)}
 .kpl{list-style:none;padding:0;display:grid;gap:6px}.kpl .y{color:#45d6c6}.kpl .n{color:#ff8e9c}.kp .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+
+/* KD Academy — financial resilience principles on the home screen */
+.trading-principles{margin:26px 0 30px;padding:clamp(18px,3vw,30px);border:1px solid #8d5cff38;border-radius:20px;background:radial-gradient(ellipse at 100% 0%,#8d5cff13,transparent 48%),linear-gradient(145deg,#101525,#0b0f1a)}
+.principles-head{max-width:760px}
+.principles-head h2{margin:8px 0 10px;font-size:clamp(22px,3vw,30px)}
+.principles-head>p{max-width:720px;color:#b7c1da;line-height:1.75;margin:0}
+.trading-quote{margin:22px 0;padding:19px 21px;border-left:3px solid #bba3ff;border-radius:0 14px 14px 0;background:#8d5cff13}
+.trading-quote span{display:block;font-size:clamp(18px,2.6vw,25px);font-weight:800;line-height:1.45;letter-spacing:-.02em;color:#eee8ff}
+.trading-quote small{display:block;margin-top:9px;color:#aeb8d1;line-height:1.7;font-size:12px}
+.principles-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.principle-card{padding:18px;border:1px solid #ffffff12;border-radius:15px;background:#ffffff06}
+.principle-number{display:inline-flex;align-items:center;justify-content:center;width:31px;height:29px;border-radius:9px;background:#8d5cff20;color:#cbbaff;font-size:11px;font-weight:800}
+.principle-card h3{font-size:15px;margin:13px 0 8px}
+.principle-card p{margin:0;color:#b5bfd8;font-size:12px;line-height:1.8}
+.principle-warning{border-color:#ff8e9c45;background:linear-gradient(145deg,#ff667f0b,#ffffff04)}
+.principle-warning .principle-number{background:#ff667f20;color:#ffb5bf}
+.principle-safe{border-color:#49d8ce3d;background:linear-gradient(145deg,#49d8ce0c,#ffffff04)}
+.principle-safe .principle-number{background:#49d8ce20;color:#8be9df}
+.principles-footer{margin:14px 0 0;padding:14px 16px;border-radius:12px;background:#49d8ce0c;color:#d3deef;font-size:12px;line-height:1.8}
+.principles-footer strong{color:#8be9df}
+html[data-theme="light"] .trading-principles{background:linear-gradient(145deg,#fff,#f2f3fc);border-color:#d8d0fb}
+html[data-theme="light"] .principles-head>p,html[data-theme="light"] .trading-quote small,html[data-theme="light"] .principle-card p{color:#515c78}
+html[data-theme="light"] .trading-quote span{color:#453477}
+html[data-theme="light"] .principle-card{background:#f8f9ff;border-color:#dce1ef}
+html[data-theme="light"] .principles-footer{color:#39455f}
+@media(max-width:700px){.principles-grid{grid-template-columns:1fr}.trading-principles{padding:17px}.principle-card{padding:15px}.trading-quote{padding:16px}}
